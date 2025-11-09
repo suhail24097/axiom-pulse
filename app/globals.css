@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth color transitions on price changes */
+.price-delta-up { animation: flashUp 600ms ease-out; }
+.price-delta-down { animation: flashDown 600ms ease-out; }
+@keyframes flashUp { 0% { background-color: rgba(22,163,74,0.35); } 100% { background-color: transparent; } }
+@keyframes flashDown { 0% { background-color: rgba(220,38,38,0.35); } 100% { background-color: transparent; } }
+
+/* Skeleton shimmer */
+.skeleton { @apply bg-gray-200 dark:bg-gray-800 rounded-md relative overflow-hidden; }
+.skeleton::after {
+  content: "";
+  position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer { 100% { transform: translateX(100%);} }
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+/* Page container */
+.container {
+  max-width: 1120px;  /* close to their content width */
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+/* Table card */
+.card {
+  border: 1px solid theme('colors.line');
+  border-radius: 0.75rem;
+  background: white;
+}
+
+/* Table header */
+th {
+  font-weight: 600;
+  color: theme('colors.muted');
+}
+
+/* Row hover stronger */
+tr:hover {
+  background: #F9FAFB;
+}

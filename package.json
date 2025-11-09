@@ -1,0 +1,64 @@
+{
+  "name": "axiom-pulse",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "ws": "node scripts/mock-ws.mjs",
+
+    "//": "Run frontend + WebSocket together in development",
+    "dev:all": "concurrently \"pnpm dev\" \"pnpm ws\"",
+
+    "//2": "Run production frontend + WebSocket together",
+    "start:all": "concurrently \"pnpm start\" \"pnpm ws\"",
+
+    "test:vrt": "playwright test",
+    "vrt:update": "node tests/vrt/update-baseline.mjs"
+  },
+
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+
+    "@tanstack/react-query": "^5.59.16",
+    "@tanstack/react-table": "^8.20.5",
+
+    "@reduxjs/toolkit": "^2.2.7",
+    "react-redux": "^9.1.2",
+
+    "immer": "^10.1.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.3",
+    "zod": "^3.23.8",
+
+    "@radix-ui/react-tooltip": "^1.0.7",
+    "@radix-ui/react-popover": "^1.0.7",
+    "@radix-ui/react-dialog": "^1.0.7",
+
+    "ws": "^8.18.0"
+  },
+
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^20.12.14",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
+
+    "tailwindcss": "^3.4.13",
+    "postcss": "^8.4.47",
+    "autoprefixer": "^10.4.20",
+
+    "concurrently": "^9.1.2",
+
+    "playwright": "^1.48.2",
+    "pixelmatch": "^5.3.0",
+    "@types/pixelmatch": "^5.2.6",
+    "pngjs": "^7.0.0",
+    "@types/ws": "^8.5.10"
+  }
+}
